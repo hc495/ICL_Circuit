@@ -1,0 +1,3 @@
+[submodule "StaICC"]
+	path = StaICC
+	url = https://github.com/hc495/StaICC
