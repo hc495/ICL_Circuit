@@ -1,0 +1,9 @@
+*.pickle
+*.pdf
+*.png
+.ipynb_checkpoints/
+__pycache__/
+data/
+experiment_matrial/
+figures/
+old/
