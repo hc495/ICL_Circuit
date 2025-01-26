@@ -1,10 +1,17 @@
 # Official code implementation of paper: "Revisiting In-context Learning Inference Circuit in Large Language Models"
 
+<p align="center">
+  <a href="https://arxiv.org/abs/2410.04468">arXiv</a> •
+  <a href="https://openreview.net/forum?id=xizpnYNvQq">OpenReview</a>
+</p>
+
 **This repo contains the official code for the following paper:**
 
-> Hakaze Cho, et al. "Revisiting In-context Learning Inference Circuit in Large Language Models." The Thirteenth International Conference on Learning Representations (ICLR), 2025.
+> Hakaze Cho, et al. **"Revisiting In-context Learning Inference Circuit in Large Language Models."** *The Thirteenth International Conference on Learning Representations (ICLR)*, 2025.
 
-Implemented by Hakaze Cho, the main contributor of the paper.
+Implemented by [Hakaze Cho](https://www.hakaze-c.com/), the primary contributor of the paper.
+
+## Overview
 
 ### Abstract
 
@@ -16,7 +23,7 @@ Implemented by Hakaze Cho, the main contributor of the paper.
 
 *The 3-phase inference diagram of ICL. Step 1: LMs encode every input text into representations, Step 2: LMs merge the encoded text representations of demonstrations with their corresponding label semantics, Step 3: LMs retrieve merged label-text representations similar to the encoded query, and copy the retrieved representations into the query representation.*
 
-## Get Started
+## Set Up
 
 ### 0. Requirement
 
@@ -30,20 +37,21 @@ Implemented by Hakaze Cho, the main contributor of the paper.
 git clone https://github.com/hc495/ICL_Circuit.git
 ```
 
-### 2. Installation
+### 2. Environment Installation
+
+**Direct Installation**
 
 ```bash
 conda env create -f environment.yaml
 conda activate icl_circuit
 ```
 
-We use our own-developed library `StaICC`(https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by:
+We use our own-developed library `StaICC`(https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by: `pip install StaICC` or use our accompanying library `StaICC`.
 
-```bash
-pip install StaICC
-```
+**Image Installation (backup)**
 
-or use our accompanying library `StaICC`.
+
+We deeply understand that setting up an environment can be a quite tedious process, and errors may occur at any stage. Therefore, we have made the image of our experimental environment publicly available. You can download it [here](https://drive.google.com/file/d/1rOYz4h-jqEQqsivWuzkS6CPoaVjpTdFe/view?usp=sharing) and `tar -xzf icl_circuit.tar.gz -C ~/anaconda3/envs/icl_circuit`.
 
 ### 3. Make Sure Your Working Directory is the Root Directory of the Project
 
@@ -65,7 +73,7 @@ This experiment is to calculate the LM loss of the query on the ICL model, to ge
 
 ## Citation
 
-If you want to cite this work, please use the following BibTeX entry:
+If you find this work useful for your research, please cite [our paper](https://openreview.net/forum?id=xizpnYNvQq):
 
 ```
 @inproceedings{cho2025revisiting,
