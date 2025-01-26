@@ -29,7 +29,7 @@ Implemented by [Hakaze Cho](https://www.hakaze-c.com/), the primary contributor 
 ### 0. Requirement
 
 1. 1 GPU with more than 40GB VRAM and CUDA (12.4 recommended) are strongly required to run all the experiments.
-2. Network connection to `huggingface` is needed to download the pre-trained model.
+2. Network connection to `huggingface` is needed to download the pre-trained model. And a `huggingface` user token with access to the [`Llama2`](https://huggingface.co/meta-llama/Llama-2-7b) model is recommended to run a part of the experiments.
 3. `Anaconda` or `Miniconda` is needed.
 
 ### 1. Clone the repository
@@ -47,7 +47,7 @@ conda env create -f environment.yaml
 conda activate icl_circuit
 ```
 
-We use our own-developed library `StaICC`(https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by: `pip install StaICC` or use our accompanying library `StaICC`.
+We use our own-developed library [`StaICC`](https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by: `pip install StaICC` or use our accompanying library `StaICC`.
 
 **Image Installation (backup)**
 
