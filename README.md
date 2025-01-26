@@ -6,7 +6,7 @@
   <a href="https://huggingface.co/papers/2410.04468">HuggingFace</a>
 </p>
 
-**This repo contains the official code for the following paper:**
+**This repo contains the official code for the following paper published at ICLR 2025:**
 
 > Hakaze Cho, et al. **"Revisiting In-context Learning Inference Circuit in Large Language Models."** *The Thirteenth International Conference on Learning Representations (ICLR)*, 2025.
 
