@@ -50,7 +50,6 @@ We use our own-developed library `StaICC`(https://github.com/hc495/StaICC) to fo
 
 **Image Installation (backup)**
 
-
 We deeply understand that setting up an environment can be a quite tedious process, and errors may occur at any stage. Therefore, we have made the image of our experimental environment publicly available. You can download it [here](https://drive.google.com/file/d/1rOYz4h-jqEQqsivWuzkS6CPoaVjpTdFe/view?usp=sharing) and `tar -xzf icl_circuit.tar.gz -C ~/anaconda3/envs/icl_circuit`.
 
 ### 3. Make Sure Your Working Directory is the Root Directory of the Project
@@ -61,13 +60,15 @@ We provide a default `os.chdir()` method in every notebook, you should use it to
 
 ## Experiments
 
-We use Jupyter notebooks to implement all the experiments descirbed in the paper. We index these notebooks here with the corresponding result figures in the paper, and leave the detailed experiment instructions in each notebook.
+Due to the fact that this paper consists of many relatively independent experiments, we use Jupyter notebooks to implement all the experiments descirbed in the main body (Appendix experiments will be released later). We index these notebooks here with the corresponding result figures/tables in the paper, and leave the detailed experiment instructions in each notebook.
 
 | Index | Notebook | Result Figure | Description |
 | :---: | :---: | :---: | :---: |
 | 1 | `Exp1_Kernel_Alignment.ipynb` | Fig. 2 (Left, Middle) | This experiment is to calculate the kernel alignment between the ICL hidden states and the sentence embedding. Control the parameters differently will make you get the Fig. 2 Left (by `ICL_selected_token_type`) and Middle (by `k`). |
 | 2 | `Exp1_Query_PPL.ipynb` | Fig. 2 (Right) | This experiment is to calculate the LM loss of the query on the ICL model, to get the x-axis of Fig. 2 Right. Augmented with the individual kernel alignment data from the results of `Exp1_Kernel_Alignment.ipynb`, you can get the Fig. 2 Right. |
-| 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) |  |
+| 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) | This experiment is to train centroid classifiers on the ICL hidden states, then test the accuracies to get whether the information in the hidden states is sufficient for ICL task. Also, by controlling the selection of different hidden states, we can conduct a control experiment as shown in Fig. 5 (Right). |
+
+--- Not completed yet ---
 
 ## Citation
 

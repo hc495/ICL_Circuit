@@ -1,10 +1,8 @@
 # Official implementation of paper "Revisiting In-context Learning Inference Circuit in Large Language Models"
 # Author: Hakaze Cho, yfzhao@jaist.ac.jp
 
-import sys
-sys.path.append("..")
 from StaICC_Expe.StaICC.util import stable_random, functional
-import warnings
+from tqdm import tqdm as tqdm
 
 class hidden_calibration():
     # https://arxiv.org/abs/2406.16535
@@ -90,7 +88,7 @@ class layered_hidden_calibration():
 
     def batched_layered_inference(self, layered_hidden_states: list[list[list[float]]]) -> list[list[list[float]]]: # [layer][sample][hidden_state] -> [layer][sample][label_prob]
         ret = [[] for _ in range(len(self.calibrations))]
-        for sample_index in range(len(layered_hidden_states[0])):
+        for sample_index in tqdm(range(len(layered_hidden_states[0]))):
             layered_hidden_state = []
             for i in range(len(self.calibrations)):
                 layered_hidden_state.append(layered_hidden_states[i][sample_index])
