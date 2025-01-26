@@ -1,3 +1,6 @@
+# Official implementation of paper "Revisiting In-context Learning Inference Circuit in Large Language Models"
+# Author: Hakaze Cho, yfzhao@jaist.ac.jp
+
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModel, BitsAndBytesConfig
 import torch
 

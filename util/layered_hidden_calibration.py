@@ -1,3 +1,6 @@
+# Official implementation of paper "Revisiting In-context Learning Inference Circuit in Large Language Models"
+# Author: Hakaze Cho, yfzhao@jaist.ac.jp
+
 import sys
 sys.path.append("..")
 from StaICC_Expe.StaICC.util import stable_random, functional

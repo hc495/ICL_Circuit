@@ -1,3 +1,6 @@
+# Official implementation of paper "Revisiting In-context Learning Inference Circuit in Large Language Models"
+# Author: Hakaze Cho, yfzhao@jaist.ac.jp
+
 def get_induction_correctness_for_single_layer(ICL_attention, experimentor, sample_index, layer):
     demo_indexs = experimentor.demonstration_sampler[sample_index]
     demo_labels = []
