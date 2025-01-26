@@ -54,7 +54,7 @@ def get_ppl(model, tokenizer, queries):
         for query in tqdm(queries):
             tknzd_data = tokenizer(query, return_tensors="pt").input_ids.to(model.device)
             result = model(tknzd_data, labels = tknzd_data)
-            ret.append(result.loss.detach().to(torch.float).cpu().numpy())
+            ret.append(result.loss.detach().to(torch.float).cpu().numpy().item())
         return ret
     
 def ICL_inference_to_multi_token_hidden_states(model, tokenizer, prompts, tokens): # [prompt] -> [layer][prompt][token][hidden_state]
