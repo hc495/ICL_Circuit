@@ -28,7 +28,7 @@ Implemented by [Hakaze Cho](https://www.hakaze-c.com/), the primary contributor 
 
 ### 0. Requirement
 
-1. 1 GPU with more than 40GB VRAM and CUDA (12.4 recommended) are strongly required to run all the experiments.
+1. 1 GPU with more than 40GB VRAM and CUDA (Ver. `12.4` recommended) are strongly required to run all the experiments.
 2. Network connection to `huggingface` is needed to download the pre-trained model. And a `huggingface` user token with access to the [`Llama2`](https://huggingface.co/meta-llama/Llama-2-7b) model is recommended to run a part of the experiments.
 3. `Anaconda` or `Miniconda` is needed.
 
