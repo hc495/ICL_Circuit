@@ -2,7 +2,8 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2410.04468">arXiv</a> •
-  <a href="https://openreview.net/forum?id=xizpnYNvQq">OpenReview</a>
+  <a href="https://openreview.net/forum?id=xizpnYNvQq">OpenReview</a> •
+  <a href="https://huggingface.co/papers/2410.04468">HuggingFace</a>
 </p>
 
 **This repo contains the official code for the following paper:**
