@@ -64,7 +64,7 @@ We provide a default `os.chdir()` method in every notebook, you should use it to
 We use Jupyter notebooks to implement all the experiments descirbed in the paper. We index these notebooks here with the corresponding result figures in the paper, and leave the detailed experiment instructions in each notebook.
 
 | Index | Notebook | Result Figure | Description |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: |
 | 1 | `Exp1_Kernel_Alignment.ipynb` | Fig. 2 (Left, Middle) | This experiment is to calculate the kernel alignment between the ICL hidden states and the sentence embedding. Control the parameters differently will make you get the Fig. 2 Left (by `ICL_selected_token_type`) and Middle (by `k`). |
 | 2 | `Exp1_Query_PPL.ipynb` | Fig. 2 (Right) | This experiment is to calculate the LM loss of the query on the ICL model, to get the x-axis of Fig. 2 Right. Augmented with the individual kernel alignment data from the results of `Exp1_Kernel_Alignment.ipynb`, you can get the Fig. 2 Right. |
 | 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) |  |
