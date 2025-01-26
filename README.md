@@ -1,4 +1,4 @@
-# Official code implementation of paper: "Revisiting In-context Learning Inference Circuit in Large Language Models"
+# Revisiting In-context Learning Inference Circuit in Large Language Models
 
 <p align="center">
   <a href="https://arxiv.org/abs/2410.04468">arXiv</a> •
@@ -63,13 +63,11 @@ We provide a default `os.chdir()` method in every notebook, you should use it to
 
 We use Jupyter notebooks to implement all the experiments descirbed in the paper. We index these notebooks here with the corresponding result figures in the paper, and leave the detailed experiment instructions in each notebook.
 
-### Figure 2: Left and Middle (`Experiments/Exp1_Kernel_Alignment.ipynb`)
-
-This experiment is to calculate the kernel alignment between the ICL hidden states and the sentence embedding. Control the parameters differently will make you get the Fig. 2 Left (by `ICL_selected_token_type`) and Middle (by `k`).
-
-### Figure 2: Right (`Experiments/Exp1_Query_PPL.ipynb`)
-
-This experiment is to calculate the LM loss of the query on the ICL model, to get the x-axis of Fig. 2 Right. Augmented with the individual kernel alignment data from the results of `Exp1_Kernel_Alignment.ipynb`, you can get the Fig. 2 Right.
+| Index | Notebook | Result Figure | Description |
+| --- | --- | --- | --- |
+| 1 | `Exp1_Kernel_Alignment.ipynb` | Fig. 2 (Left, Middle) | This experiment is to calculate the kernel alignment between the ICL hidden states and the sentence embedding. Control the parameters differently will make you get the Fig. 2 Left (by `ICL_selected_token_type`) and Middle (by `k`). |
+| 2 | `Exp1_Query_PPL.ipynb` | Fig. 2 (Right) | This experiment is to calculate the LM loss of the query on the ICL model, to get the x-axis of Fig. 2 Right. Augmented with the individual kernel alignment data from the results of `Exp1_Kernel_Alignment.ipynb`, you can get the Fig. 2 Right. |
+| 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) |  |
 
 ## Citation
 
