@@ -1,7 +1,7 @@
 # Revisiting In-context Learning Inference Circuit in Large Language Models
 
 <p align="center">
-  <a href="https://www.hakaze-c.com/">Hakaze Cho, et al.
+  <a href="https://www.hakaze-c.com/">Hakaze Cho</a>, et al.
   <br>
   <a href="https://arxiv.org/abs/2410.04468">arXiv</a> •
   <a href="https://openreview.net/forum?id=xizpnYNvQq">OpenReview</a> •
