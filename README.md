@@ -1,9 +1,16 @@
 # Revisiting In-context Learning Inference Circuit in Large Language Models
 
 <p align="center">
+  <a href="https://www.hakaze-c.com/">Hakaze Cho, et al.
+  <br>
   <a href="https://arxiv.org/abs/2410.04468">arXiv</a> •
   <a href="https://openreview.net/forum?id=xizpnYNvQq">OpenReview</a> •
   <a href="https://huggingface.co/papers/2410.04468">HuggingFace</a>
+  <br>
+  <br>
+  <img alt="Static Badge" src="https://img.shields.io/badge/license-MIT-yellow?style=flat&link=https%3A%2F%2Fgithub.com%2Fhc495%2FICL_Circuit%2Fblob%2Fmaster%2FLICENSE">
+  <img src="https://img.shields.io/badge/ICLR_2025-Accepted-blue?link=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3DxizpnYNvQq">
+  <img alt="Static Badge" src="https://img.shields.io/badge/arXiv-2410.04468-red?style=flat&link=https%3A%2F%2Farxiv.org%2Fabs%2F2410.04468">
 </p>
 
 **This repo contains the official code for the following paper published at ICLR 2025:**
@@ -67,9 +74,24 @@ Due to the fact that this paper consists of many relatively independent experime
 | :---: | :---: | :---: | :---: |
 | 1 | `Exp1_Kernel_Alignment.ipynb` | Fig. 2 (Left, Middle) | This experiment is to calculate the kernel alignment between the ICL hidden states and the sentence embedding. Control the parameters differently will make you get the Fig. 2 Left (by `ICL_selected_token_type`) and Middle (by `k`). |
 | 2 | `Exp1_Query_PPL.ipynb` | Fig. 2 (Right) | This experiment is to calculate the LM loss of the query on the ICL model, to get the x-axis of Fig. 2 Right. Augmented with the individual kernel alignment data from the results of `Exp1_Kernel_Alignment.ipynb`, you can get the Fig. 2 Right. |
-| 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) | This experiment is to train centroid classifiers on the ICL hidden states, then test the accuracies to get whether the information in the hidden states is sufficient for ICL task. Also, by controlling the selection of different hidden states, we can conduct a control experiment as shown in Fig. 5 (Right). |
+| 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) | This experiment is to train centroid classifiers on the ICL hidden states, then test the accuracies to get whether the information in the hidden states is sufficient for ICL task. Also, by controlling the selection of different hidden states, we can conduct a controlled experiment as shown in Fig. 5 (Right). |
+| 4 | `Exp2_ICL_Feature_Similarity.ipynb` | Fig. 4 | This experiment is to calculate the similarity between the hidden states of the forerunner tokens, to directly get the Fig. 4. |
 
 --- Not completed yet ---
+
+We are regretful for an iterative release of the codes. We have only one person to maintain the project, and arranging the experiments are quite time-consuming. We will release the rest of the experiments as soon as possible. The next release is scheduled to be on 2025/01/31.
+
+### Parameter `dataset_index`
+
+In the experiments, we use the `dataset_index` parameter to control the dataset used in the experiments, defined as follows:
+
+- `0`: `SST-2`
+- `1`: `MR` (`rotten_tomatoes`)
+- `2`: `FP` (`financial_phrasebank`)
+- `3`: `SST5`
+- `4`: `TREC`
+- `5`: `AGNews`
+- `7`: `TEE` (only used in the control experiments of Fig. 2 (Left, Middle))
 
 ## Citation
 
