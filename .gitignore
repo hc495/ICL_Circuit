@@ -3,7 +3,6 @@
 *.png
 .ipynb_checkpoints/
 __pycache__/
-experiment_matrial/
 figures/
 old/
 Visualization/
