@@ -54,7 +54,7 @@ conda env create -f environment.yaml
 conda activate icl_circuit
 ```
 
-We use our own-developed library [`StaICC`](https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by: `pip install StaICC` or use our accompanying library `StaICC`.
+We use our own-developed library [`StaICC`](https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by: `pip install StaICC` or use the accompanying path `StaICC` in this repo.
 
 **Image Installation (backup)**
 
