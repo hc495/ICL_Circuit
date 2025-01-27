@@ -76,6 +76,7 @@ Due to the fact that this paper consists of many relatively independent experime
 | 2 | `Exp1_Query_PPL.ipynb` | Fig. 2 (Right) | This experiment is to calculate the LM loss of the query on the ICL model, to get the x-axis of Fig. 2 Right. Augmented with the individual kernel alignment data from the results of `Exp1_Kernel_Alignment.ipynb`, you can get the Fig. 2 Right. |
 | 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) | This experiment is to train centroid classifiers on the ICL hidden states, then test the accuracies to get whether the information in the hidden states is sufficient for ICL task. Also, by controlling the selection of different hidden states, we can conduct a controlled experiment as shown in Fig. 5 (Right). |
 | 4 | `Exp2_ICL_Feature_Similarity.ipynb` | Fig. 4 | This experiment is to calculate the similarity between the hidden states of the forerunner tokens, to directly get the Fig. 4. |
+| 5 | `Exp3_Kernel_Alignment_Across_s_and_y.ipynb` | Fig. 5 (Left) | This experiment is to calculate the kernel alignment of the hidden states of forerunner tokens and the label token in the next layer to get the Fig. 5 (Left). |
 
 --- Not completed yet ---
 
