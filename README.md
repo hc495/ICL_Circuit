@@ -8,9 +8,9 @@
   <a href="https://huggingface.co/papers/2410.04468">HuggingFace</a>
   <br>
   <br>
-  <a href="https://github.com/hc495/ICL_Circuit/blob/master/LICENSE"><img alt="Static Badge" src="https://img.shields.io/badge/license-MIT-yellow?style=flat&link=https%3A%2F%2Fgithub.com%2Fhc495%2FICL_Circuit%2Fblob%2Fmaster%2FLICENSE">
-  <a href="https://openreview.net/forum?id=xizpnYNvQq"><img src="https://img.shields.io/badge/ICLR_2025-Accepted-blue?link=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3DxizpnYNvQq">
-  <a href="https://arxiv.org/abs/2410.04468"><img alt="Static Badge" src="https://img.shields.io/badge/arXiv-2410.04468-red?style=flat&link=https%3A%2F%2Farxiv.org%2Fabs%2F2410.04468">
+  <a href="https://github.com/hc495/ICL_Circuit/blob/master/LICENSE"><img alt="Static Badge" src="https://img.shields.io/badge/license-MIT-yellow?style=flat&link=https%3A%2F%2Fgithub.com%2Fhc495%2FICL_Circuit%2Fblob%2Fmaster%2FLICENSE"></a>
+  <a href="https://openreview.net/forum?id=xizpnYNvQq"><img src="https://img.shields.io/badge/ICLR_2025-Accepted-blue?link=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3DxizpnYNvQq"></a>
+  <a href="https://arxiv.org/abs/2410.04468"><img alt="Static Badge" src="https://img.shields.io/badge/arXiv-2410.04468-red?style=flat&link=https%3A%2F%2Farxiv.org%2Fabs%2F2410.04468"></a>
 </p>
 
 **This repo contains the official code for the following paper published at ICLR 2025:**
