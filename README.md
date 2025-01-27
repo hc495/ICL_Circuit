@@ -79,7 +79,7 @@ Due to the fact that this paper consists of many relatively independent experime
 
 --- Not completed yet ---
 
-We are regretful for an iterative release of the codes. We have only one person to maintain the project, and arranging the experiments are quite time-consuming. We will release the rest of the experiments as soon as possible. The next release is scheduled to be on 2025/01/31.
+We are regretful for an iterative release of the codes. We have only one person to maintain the project, and organizing the experiment codes are quite time-consuming. We will release the rest of the experiments as soon as possible. The next release is scheduled to be on 2025/01/31.
 
 ### Parameter `dataset_index`
 
