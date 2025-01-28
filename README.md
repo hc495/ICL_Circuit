@@ -54,7 +54,7 @@ conda env create -f environment.yaml
 conda activate icl_circuit
 ```
 
-We use our own-developed library [`StaICC`](https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by: `pip install StaICC` or use the accompanying path `StaICC` in this repo.
+We use our own-developed library [`StaICC`](https://github.com/hc495/StaICC) to form the ICL-styled inputs. You can install it by: `pip install StaICC` or use the accompanying path `StaICC` in this repo (`git submodule update --init`).
 
 **Image Installation (backup)**
 
@@ -77,6 +77,7 @@ Due to the fact that this paper consists of many relatively independent experime
 | 3 | `Exp2_Centroid_Classifier.ipynb` | Fig. 3, Fig. 5 (Right) | This experiment is to train centroid classifiers on the ICL hidden states, then test the accuracies to get whether the information in the hidden states is sufficient for ICL task. Also, by controlling the selection of different hidden states, we can conduct a controlled experiment as shown in Fig. 5 (Right). |
 | 4 | `Exp2_ICL_Feature_Similarity.ipynb` | Fig. 4 | This experiment is to calculate the similarity between the hidden states of the forerunner tokens, to directly get the Fig. 4. |
 | 5 | `Exp3_Kernel_Alignment_Across_s_and_y.ipynb` | Fig. 5 (Left) | This experiment is to calculate the kernel alignment of the hidden states of forerunner tokens and the label token in the next layer to get the Fig. 5 (Left). |
+| 6 | `Exp3_Forerunner_Token_Head_Counting.ipynb` | Fig. 5 (Middle) | This experiment is to count the number of forerunner token heads in each layer, and also the maximum copy magnitude. |
 
 --- Not completed yet ---
 

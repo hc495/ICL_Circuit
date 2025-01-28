@@ -234,3 +234,9 @@ def step2_get_attention_of_different_location(model, tokenizer, prompts_with_lab
                             normal_copy[layer].append(result.attentions[layer][0][head][index][index-1].detach().cpu().numpy().item() * tknzd_data.shape[1])
             del result
         return normal_copy, label_copy
+
+def get_copy_magnitude_for_single_layer(ICL_attention, sample_index, layer):
+    res = []
+    for heads in ICL_attention[sample_index][layer]:
+        res.append(heads[0].item())
+    return res
