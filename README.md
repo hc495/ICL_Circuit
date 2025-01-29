@@ -27,9 +27,12 @@ Implemented by [Hakaze Cho](https://www.hakaze-c.com/), the primary contributor 
 
 ### Summary figure
 
-![Summary figure](https://s2.loli.net/2025/01/26/vXt2VD1iYQ7rJIZ.png)
+<p align="center">
+<img src="https://s2.loli.net/2025/01/26/vXt2VD1iYQ7rJIZ.png" width="60%" />
+</p>
 
 *The 3-phase inference diagram of ICL. Step 1: LMs encode every input text into representations, Step 2: LMs merge the encoded text representations of demonstrations with their corresponding label semantics, Step 3: LMs retrieve merged label-text representations similar to the encoded query, and copy the retrieved representations into the query representation.*
+
 
 ## Set Up
 
@@ -68,7 +71,7 @@ We provide a default `os.chdir()` method in every notebook, you should use it to
 
 ## Experiments
 
-Due to the fact that this paper consists of many relatively independent experiments, we use Jupyter notebooks to implement all the experiments descirbed in the main body (Appendix experiments will be released later). We index these notebooks here with the corresponding result figures/tables in the paper, and leave the detailed experiment instructions in each notebook.
+Due to the fact that this paper consists of many relatively independent experiments, we use Jupyter notebooks in the `Experiments` folder to implement all the experiments descirbed in the main body (Appendix experiments will be released later). We index these notebooks here with the corresponding result figures/tables in the paper, and leave the detailed experiment instructions in each notebook.
 
 | Index | Notebook | Result Figure | Description |
 | :---: | :---: | :---: | :---: |
