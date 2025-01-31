@@ -81,7 +81,8 @@ Due to the fact that this paper consists of many relatively independent experime
 | 4 | `Exp2_ICL_Feature_Similarity.ipynb` | Fig. 4 | This experiment is to calculate the similarity between the hidden states of the forerunner tokens, to directly get the Fig. 4. |
 | 5 | `Exp3_Kernel_Alignment_Across_s_and_y.ipynb` | Fig. 5 (Left) | This experiment is to calculate the kernel alignment of the hidden states of forerunner tokens and the label token in the next layer to get the Fig. 5 (Left). |
 | 6 | `Exp3_Forerunner_Token_Head_Counting.ipynb` | Fig. 5 (Middle), Fig. 22 - 25 | This experiment is to count the number of forerunner token heads in each layer, and also the maximum copy magnitude. |
-| 7 | `Exp4_Induction_Head_Counting.ipynb` | Fig. 6 (Left, Middle) | This experiment is to count the number of induction heads and correct induction heads in each layer, also calculate the accuracy based on various induction. |
+| 7 | `Exp4_Induction_Head_Counting.ipynb` | Fig. 6 (Left, Middle, Right) | This experiment is to count the number of induction heads and correct induction heads in each layer, also calculate the accuracy based on various induction. From the data exloaded from the experiment, Fig. 6 (Right) can be easily obtained. |
+| 8 | `Exp4_Induction_Head_Subspace_Visualization.ipynb` | Fig. 7 | This experiment is to visualize the label representations on the subspace of the induction heads in the ICL model. |
 
 --- Not completed yet ---
 
