@@ -83,7 +83,7 @@ Due to the fact that this paper consists of many relatively independent experime
 | 6 | `Exp3_Forerunner_Token_Head_Counting.ipynb` | Fig. 5 (Middle), Fig. 22 - 25 | This experiment is to count the number of forerunner token heads in each layer, and also the maximum copy magnitude. |
 | 7 | `Exp4_Induction_Head_Counting.ipynb` | Fig. 6 (Left, Middle, Right) | This experiment is to count the number of induction heads and correct induction heads in each layer, also calculate the accuracy based on various induction. From the data exloaded from the experiment, Fig. 6 (Right) can be easily obtained. |
 | 8 | `Exp4_Induction_Head_Subspace_Visualization.ipynb` | Fig. 7 | This experiment is to visualize the label representations on the subspace of the induction heads in the ICL model. |
-| 9 | `Exp5_Ablation.ipynb` | Table 1 | This experiment is to ablate the proposed ICL inference circuit and observe the performance changes. |
+| 9 | `Exp5_Ablation.ipynb` | Table 1, 2 | This experiment is to ablate the proposed ICL inference circuit and observe the performance changes. |
 
 --- Not completed yet ---
 
