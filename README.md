@@ -28,7 +28,7 @@ Implemented by [Hakaze Cho](https://www.hakaze-c.com/), the primary contributor 
 ### Summary figure
 
 <p align="center">
-<img src="https://s2.loli.net/2025/01/26/vXt2VD1iYQ7rJIZ.png" width="60%" />
+<img src="https://s2.loli.net/2025/01/26/vXt2VD1iYQ7rJIZ.png" width="70%" />
 </p>
 
 *The 3-phase inference diagram of ICL. Step 1: LMs encode every input text into representations, Step 2: LMs merge the encoded text representations of demonstrations with their corresponding label semantics, Step 3: LMs retrieve merged label-text representations similar to the encoded query, and copy the retrieved representations into the query representation.*
