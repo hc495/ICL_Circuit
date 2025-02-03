@@ -85,9 +85,9 @@ Due to the fact that this paper consists of many relatively independent experime
 | 8 | `Exp4_Induction_Head_Subspace_Visualization.ipynb` | Fig. 7 | This experiment is to visualize the label representations on the subspace of the induction heads in the ICL model. |
 | 9 | `Exp5_Ablation.ipynb` | Table 1, 2 | This experiment is to ablate the proposed ICL inference circuit and observe the performance changes. |
 
---- Not completed yet ---
+<!-- --- Not completed yet ---
 
-We are regretful for an iterative release of the codes. We have only one person to maintain the project, and organizing the experiment codes are quite time-consuming. We will release the rest of the experiments as soon as possible. The next release is scheduled to be on 2025/02/5.
+We are regretful for an iterative release of the codes. We have only one person to maintain the project, and organizing the experiment codes are quite time-consuming. We will release the rest of the experiments as soon as possible. The next release is scheduled to be on 2025/02/5. -->
 
 ### Parameter `dataset_index`
 
