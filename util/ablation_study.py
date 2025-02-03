@@ -1,6 +1,3 @@
-# Official implementation of paper "Revisiting In-context Learning Inference Circuit in Large Language Models"
-# Author: Hakaze Cho, yfzhao@jaist.ac.jp
-
 from tqdm import tqdm as tqdm
 from typing import Optional, Tuple, Union
 import random
@@ -10,7 +7,7 @@ import torch.nn.functional as F
 import torch.utils.checkpoint
 from torch.nn import CrossEntropyLoss
 
-from transformers.cache_utils import Cache, DynamicCache, StaticCache
+from transformers.cache_utils import StaticCache
 from transformers.modeling_attn_mask_utils import (
     AttentionMaskConverter,
 )
@@ -23,6 +20,21 @@ from transformers.modeling_outputs import (
     BaseModelOutputWithPast,
     CausalLMOutputWithPast,
 )
+
+def make_falcon_model(model):
+    model.transformer.layered_mask_inference_for_falcon = types.MethodType(layered_mask_inference_for_falcon, model.transformer)
+    model.transformer._update_causal_mask = types.MethodType(_update_causal_mask, model.transformer)
+    model.layered_mask_inference_for_falcon_CLM = types.MethodType(layered_mask_inference_for_falcon_CLM, model)
+
+def make_llama_model(model):
+    model.model.layered_mask_inference_for_llama = types.MethodType(layered_mask_inference_for_llama, model.model)
+    model.layered_mask_inference_for_llama_CLM = types.MethodType(layered_mask_inference_for_llama_CLM, model)
+
+def make_llama_model_Q(model):
+    model.model.layered_mask_inference_for_llama = types.MethodType(layered_mask_inference_for_llamaQ, model.model)
+    model.layered_mask_inference_for_llama_CLM = types.MethodType(layered_mask_inference_for_llama_CLM, model)
+
+
 
 def find_tokenized_label_word(tokenizer, experimentor, prompt):
     tokenized_prompt_input_ids = tokenizer(prompt)['input_ids']
@@ -346,10 +358,10 @@ def Masked_ICL_inference(
     inference_type = "llama",
     mask_start_layer: int = 0,
     mask_end_layer: int = 1,
-    attention_mask_type = "default_causal_attention_mask",
+    attention_mask_type = "default_causal_attention_mask", # default_causal_attention_mask, xq_to_sq, LW_to_query_FRT, demo_FRT_to_LW, demo_text_to_demo_FRT, demo_FRT_to_LW_star, all_F_to_F
     cache_empty: callable = torch.cuda.empty_cache(), # GPU cache empty function. Can be torch.cuda.empty_cache.
-    dtype = None,
-    control = True
+    dtype = None, # Data type for the mask. If None, it will be the same as the model's dtype.
+    run_control_experiment_parallelly = True # Whether to run control experiment parallelly.
 ):
     if dtype is None:
         dtype = model.dtype
@@ -363,7 +375,7 @@ def Masked_ICL_inference(
                 cache_empty()
             if attention_mask_type == "default_causal_attention_mask":
                 attention_mask = [None, 0]
-            elif attention_mask_type == "query_to_query_FRT":
+            elif attention_mask_type == "xq_to_sq": # Line 3
                 fore_runner_loca, label_words_loca = find_tokenized_label_word(tokenizer, experimentor, prompt)
                 attention_mask = AttentionMaskForModel.single_attention_mask_for_query_FRT(
                     length = len(plain_tokenized),
@@ -374,7 +386,7 @@ def Masked_ICL_inference(
                     mask_layer_end = mask_end_layer,
                     dtype=dtype
                 )
-            elif attention_mask_type == "LW_to_query_FRT":
+            elif attention_mask_type == "yi_to_sq": # Line 5
                 fore_runner_loca, label_words_loca = find_tokenized_label_word(tokenizer, experimentor, prompt)
                 attention_mask = AttentionMaskForModel.attention_mask_for_query_FRT_to_LW(
                     length = len(plain_tokenized),
@@ -385,7 +397,7 @@ def Masked_ICL_inference(
                     mask_layer_end = mask_end_layer,
                     dtype=dtype
                 )
-            elif attention_mask_type == "demo_FRT_to_LW":
+            elif attention_mask_type == "si_to_yi": # Line 4
                 fore_runner_loca, label_words_loca = find_tokenized_label_word(tokenizer, experimentor, prompt)
                 attention_mask = AttentionMaskForModel.attention_mask_for_demo_FRT_to_LW(
                     length = len(plain_tokenized),
@@ -396,7 +408,7 @@ def Masked_ICL_inference(
                     mask_layer_end = mask_end_layer,
                     dtype=dtype
                 )
-            elif attention_mask_type == "demo_text_to_demo_FRT":
+            elif attention_mask_type == "xi_to_si": # Line 2
                 fore_runner_loca, label_words_loca = find_tokenized_label_word(tokenizer, experimentor, prompt)
                 attention_mask = AttentionMaskForModel.attention_mask_for_demo_text_to_demo_FRT(
                     length = len(plain_tokenized),
@@ -407,7 +419,7 @@ def Masked_ICL_inference(
                     mask_layer_end = mask_end_layer,
                     dtype=dtype
                 )
-            elif attention_mask_type == "demo_FRT_to_LW_star":
+            elif attention_mask_type == "si_to_y[:i+1]": # Unused
                 fore_runner_loca, label_words_loca = find_tokenized_label_word(tokenizer, experimentor, prompt)
                 attention_mask = AttentionMaskForModel.attention_mask_for_demo_FRT_to_all_LW(
                     length = len(plain_tokenized),
@@ -418,7 +430,7 @@ def Masked_ICL_inference(
                     mask_layer_end = mask_end_layer,
                     dtype=dtype
                 )
-            elif attention_mask_type == "all_F_to_F":
+            elif attention_mask_type == "si_to_si": # Table 2 
                 fore_runner_loca, label_words_loca = find_tokenized_label_word(tokenizer, experimentor, prompt)
                 attention_mask = AttentionMaskForModel.attention_mask_from_forerunner_to_forerunner(
                     length = len(plain_tokenized),
@@ -432,7 +444,7 @@ def Masked_ICL_inference(
 
             attention_mask, masked_count = attention_mask[0], attention_mask[1]
 
-            if control:
+            if run_control_experiment_parallelly:
                 controlled_attention_mask = AttentionMaskForModel.random_mask(
                     length = len(plain_tokenized),
                     amount = masked_count,
@@ -448,45 +460,28 @@ def Masked_ICL_inference(
 
             tknzd_data = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device) # flexable??
             result = inference_func(tknzd_data, attention_mask = attention_mask)
-            if control:
+            if run_control_experiment_parallelly:
                 result_control = inference_func(tknzd_data, attention_mask = controlled_attention_mask)
             full_vocab_prob = result['logits'][0][-1].detach().to(torch.float).cpu().numpy()
-            if control:
+            if run_control_experiment_parallelly:
                 full_vocab_prob_control = result_control['logits'][0][-1].detach().to(torch.float).cpu().numpy()
             tokenized_label_space = [tokenizer(label).input_ids[-1] for label in label_space]
             label_space_logits = [full_vocab_prob[token] for token in tokenized_label_space]
-            if control:
+            if run_control_experiment_parallelly:
                 label_space_logits_control = [full_vocab_prob_control[token] for token in tokenized_label_space]
             label_space_prob = torch.nn.functional.softmax(torch.tensor(label_space_logits))
-            if control:
+            if run_control_experiment_parallelly:
                 label_space_prob_control = torch.nn.functional.softmax(torch.tensor(label_space_logits_control))
             del tknzd_data
             del result
-            if control:
+            if run_control_experiment_parallelly:
                 del result_control
             ret_experiment.append(label_space_prob.tolist())
-            if control:
+            if run_control_experiment_parallelly:
                 ret_control.append(label_space_prob_control.tolist())
-    if control:
+    if run_control_experiment_parallelly:
         return ret_experiment, ret_control
     return ret_experiment
-
-def make_falcon_model(model):
-    model.transformer.layered_mask_inference_for_falcon = types.MethodType(layered_mask_inference_for_falcon, model.transformer)
-    model.transformer._update_causal_mask = types.MethodType(_update_causal_mask, model.transformer)
-    model.layered_mask_inference_for_falcon_CLM = types.MethodType(layered_mask_inference_for_falcon_CLM, model)
-
-def make_llama_model(model):
-    model.model.layered_mask_inference_for_llama = types.MethodType(layered_mask_inference_for_llama, model.model)
-    model.layered_mask_inference_for_llama_CLM = types.MethodType(layered_mask_inference_for_llama_CLM, model)
-
-def make_llama_model_Q(model):
-    model.model.layered_mask_inference_for_llama = types.MethodType(layered_mask_inference_for_llamaQ, model.model)
-    model.layered_mask_inference_for_llama_CLM = types.MethodType(layered_mask_inference_for_llama_CLM, model)
-
-
-
-
 
 
 
